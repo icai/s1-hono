@@ -1,9 +1,29 @@
 import { Hono } from 'hono'
+import { cors } from 'hono/cors'
+import { fanyi } from './controllers/fanyi';
+import { ip } from './controllers/ip';
 
 const app = new Hono()
 
+const allowedOrigins = ['http://localhost:52804', 'http://localhost:3000', 'http://tools.w3cub.com'];
+
+app.use(
+  '/api/*',
+  cors({
+    origin: allowedOrigins,
+    allowHeaders: ['X-Custom-Header', 'Upgrade-Insecure-Requests'],
+    allowMethods: ['POST', 'GET', 'OPTIONS'],
+    exposeHeaders: ['Content-Length', 'X-Kuma-Revision'],
+    maxAge: 600,
+    credentials: true,
+  })
+)
+
 app.get('/', (c) => {
-  return c.text('Hello Hono!')
+  return c.text('it work!')
 })
+
+app.get('/api/fanyi', fanyi)
+app.get('/api/ip', ip)
 
 export default app
