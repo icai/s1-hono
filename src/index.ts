@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { fanyi } from './controllers/fanyi';
 import { ip } from './controllers/ip';
+import { base64 } from './controllers/image-to-base64';
 
 const app = new Hono()
 
@@ -25,5 +26,6 @@ app.get('/', (c) => {
 
 app.get('/api/fanyi', fanyi)
 app.get('/api/ip', ip)
+app.get('/api/image-to-base64', base64)
 
 export default app
