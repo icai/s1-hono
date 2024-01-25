@@ -6,13 +6,12 @@ import { base64 } from './controllers/image-to-base64';
 
 const app = new Hono()
 
-const allowedOrigins = ['http://localhost:52804', 'http://localhost:3000', 'http://tools.w3cub.com'];
+const allowedOrigins = ['http://localhost:52804', 'http://localhost:3000', 'https://tools.w3cub.com'];
 
 app.use(
   '/api/*',
   cors({
     origin: allowedOrigins,
-    allowHeaders: ['X-Custom-Header', 'Upgrade-Insecure-Requests'],
     allowMethods: ['POST', 'GET', 'OPTIONS'],
     exposeHeaders: ['Content-Length', 'X-Kuma-Revision'],
     maxAge: 600,
