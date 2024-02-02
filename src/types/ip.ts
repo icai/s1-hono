@@ -54,7 +54,7 @@ export type Ipinfo = {
 
 export type standardIp = {
   ip: string;
-  country_name: string;
+  country: string;
   country_code: string;
   city: string;
   region: string;
@@ -66,6 +66,7 @@ export type standardIp = {
 
 
 export type cfIp = {
+  asOrganization: string,
   colo: string
   country: string
   city: string
