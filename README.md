@@ -9,7 +9,7 @@ npm run dev
 ```
 
 
-##  add wrangler.toml
+##  wrangler.toml
 
 ```
 name = "s1-hono"
