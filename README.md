@@ -8,6 +8,20 @@ npm install
 npm run dev
 ```
 
+
+##  add wrangler.toml
+
+```
+name = "s1-hono"
+compatibility_date = "2023-12-01"
+
+[vars]
+IPINFO_TOKEN = "xxx"
+```
+
+
+
+
 ```
 npm run deploy
 ```

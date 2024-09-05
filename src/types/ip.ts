@@ -31,7 +31,6 @@ export type Ipapi = {
 
 export type IpApiError = { error: boolean, message: string, reason: string }
 
-// curl ipinfo.io/61.144.45.18?token=[TOKEN]
 
 // {
 // "ip": "61.144.45.18",

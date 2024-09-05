@@ -1,6 +1,7 @@
 import { Context, HonoRequest } from 'hono';
-import { IpApiError, Ipapi, Ipinfo, cfIp, standardIp } from '../types/ip';
 
+import { env } from 'hono/adapter'
+import { IpApiError, Ipapi, Ipinfo, cfIp, standardIp } from '../types/ip';
 
 export const formatIpapi = (res: Ipapi) => {
   const { ip, country_name, country_code, city, region, latitude, longitude, org, timezone } = res
@@ -59,12 +60,12 @@ export async function ip(c: Context) {
     const cfObj = formatCfIp(geo, clientIP);
     return c.json(cfObj);
   }
+  const token = env(c).IPINFO_TOKEN
   try {
     // query another server api
-    // use ipinfo.io/61.144.45.18?token=[TOKEN]
     const proxyUrl = `https://ipinfo.io/${encodeURIComponent(
       ip
-    )}?token=[TOKEN]`;
+    )}?token=${token}`;
     const proxyResponse = await fetch(proxyUrl, {
       method: 'GET'
     });
